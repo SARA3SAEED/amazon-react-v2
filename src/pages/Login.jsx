@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -10,15 +10,11 @@ export default function Login() {
   const navigate =useNavigate();
 
 
-  // useEffect(()=>{
-  //   fetchUser();
-  // },[]);
-
   const fetchUser = async (event)=>{
     event.preventDefault();
 
     try{
-    const response = await axios.get(`https://668a9a912c68eaf3211d458f.mockapi.io/user`);
+    const response = await axios.get(`https://668ae97f2c68eaf3211e2fa9.mockapi.io/user`);
     const user = response.data.find((user) => user.email === email && user.password === password);
     console.log('Get user:', user);
 
@@ -55,7 +51,7 @@ export default function Login() {
               type="button"
               data-twe-ripple-init=""
               data-twe-ripple-color="light"
-              className=" mx-1 inline-block h-9 w-9 rounded-full bg-primary fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              className=" mx-1 inline-block h-9 w-9 rounded-full bg-black fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
             >
               {/* Facebook */}
               <span className="[&>svg]:mx-auto [&>svg]:h-3.5 [&>svg]:w-3.5">
@@ -70,7 +66,7 @@ export default function Login() {
               type="button"
               data-twe-ripple-init=""
               data-twe-ripple-color="light"
-              className=" mx-1 inline-block h-9 w-9 rounded-full bg-primary fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              className=" mx-1 inline-block h-9 w-9 rounded-full bg-black fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
             >
               {/* X */}
               <span className="[&>svg]:mx-auto [&>svg]:h-3.5 [&>svg]:w-3.5">
@@ -85,7 +81,7 @@ export default function Login() {
               type="button"
               data-twe-ripple-init=""
               data-twe-ripple-color="light"
-              className=" mx-1 inline-block h-9 w-9 rounded-full bg-primary fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              className=" mx-1 inline-block h-9 w-9 rounded-full bg-black fill-white p-2 uppercase leading-normal shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
             >
               {/* Linkedin */}
               <span className="[&>svg]:mx-auto [&>svg]:h-3.5 [&>svg]:w-3.5">
@@ -159,7 +155,7 @@ export default function Login() {
           <div className="text-center lg:text-left">
             <button
               type="submit"
-              className="inline-block w-full rounded bg-primary px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+              className="inline-block w-full rounded bg-black px-7 pb-2 pt-3 text-sm font-medium uppercase leading-normal text-white shadow-primary-3 transition duration-150 ease-in-out hover:bg-primary-accent-300 hover:shadow-primary-2 focus:bg-primary-accent-300 focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-primary-600 active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               data-twe-ripple-init=""
               data-twe-ripple-color="light"
             >
@@ -168,12 +164,12 @@ export default function Login() {
             {/* Register link */}
             <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
               Don't have an account?
-              <a
-                href="#!"
+              <Link
+                to="/"
                 className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
               >
                 Register
-              </a>
+              </Link>
             </p>
           </div>
         </form>

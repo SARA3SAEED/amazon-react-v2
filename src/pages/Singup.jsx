@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -38,7 +38,7 @@ export default function Singup() {
       password:password,
       email:email
     }
-    const response = await axios.post(`https://668a9a912c68eaf3211d458f.mockapi.io/user`, dataInfo);
+    const response = await axios.post(`https://668ae97f2c68eaf3211e2fa9.mockapi.io/user`, dataInfo);
     navigate('/log')
 
   }
@@ -201,13 +201,13 @@ export default function Singup() {
                       </button>
                       {/* Register link */}
                       <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
-                        Don't have an account?
-                        <a
-                          href="#!"
+                        Ara you have an account?
+                        <Link
+                          to="/log"
                           className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
                         >
-                          Register
-                        </a>
+                          Log in
+                        </Link>
                       </p>
                     </div>
                   </form>

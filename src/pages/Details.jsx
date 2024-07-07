@@ -25,21 +25,31 @@ export default function Details() {
   }
 
 
-  const [products, setProducts]=useState([]);
+
+
+
 
 
   const postProduct = async (event)=>{
     event.preventDefault();
-   
-    const userId = localStorage.getItem('userId')
-    const productData ={
-      productId: [id]
+
+    const userId = localStorage.getItem('userId');
+    try {
+      const userResponse = await axios.get(`https://668ae97f2c68eaf3211e2fa9.mockapi.io/user/${userId}`);
+      const userData = userResponse.data;
+      const updatedProductIds = [...userData.productId, id];
+      const updatedUserData = {
+        ...userData,
+        productId: updatedProductIds
+      };
+
+      const res = await axios.put(`https://668ae97f2c68eaf3211e2fa9.mockapi.io/user/${userId}`, updatedUserData);
+      console.log(res.data);
+
+      navigate('/cart');
+    } catch (error) {
+      console.error('Error updating user data:', error);
     }
-    
-    const res = await axios.put(`https://668a9a912c68eaf3211d458f.mockapi.io/user/${userId}`, productData);
-    setProducts(res.data);
-    console.log(res.data)
-    navigate('/cart');
 
   }
 
