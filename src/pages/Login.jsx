@@ -35,7 +35,7 @@ export default function Login() {
 
   return (
     <>
-      <section className="h-screen">
+      <section className="h-screen m-9">
   <div className="h-full">
     {/* Left column container with background*/}
     <div className="flex h-full flex-wrap items-center justify-center lg:justify-between">
