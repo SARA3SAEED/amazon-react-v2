@@ -5,6 +5,7 @@ import Login from '../pages/Login';
 import Home from '../pages/Home';
 import Details from '../pages/Details';
 import Cart from '../pages/Cart';
+import NotFound from '../pages/NotFound'
 
 
 
@@ -17,6 +18,8 @@ export default function Router() {
         { path: "/log", element: <Login />,},
         { path: "/det/:id", element: <Details />,},
         { path: "/cart", element: <Cart />,},
+        { path: "/*", element: <NotFound />,},
+
 
     ])
 
