@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Nav from '../components/Nav';
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 
@@ -44,26 +44,21 @@ export default function Cart() {
     }, {});
     console.log("Get :",productMap)
     setProducts(Object.values(productMap));
+
   }
 
+  const handleAdd= (productId) => {
+    setProducts(products.map(product =>
+      product.id === productId ? { ...product, quantity: product.quantity + 1 } : product
+    ));
+  };
 
+  const handleSub= (productId) => {
+    setProducts(products.map(product =>
+      product.id === productId && product.quantity > 1 ? { ...product, quantity: product.quantity - 1 } : product
+    ));
+  };
 
-  // const fetchProducts = async () => {
-  //   const productMap = {};
-
-  //   for (const productId of carts) {
-  //     const response = await axios.get(`https://fakestoreapi.com/products/${productId}`);
-  //     const product = response.data;
-
-  //     if (productMap[product.id]) {
-  //       productMap[product.id].quantity += 1;
-  //     } else {
-  //       productMap[product.id] = { ...product, quantity: 1 };
-  //     }
-  //   }
-
-  //   setProducts(Object.values(productMap));
-  // };
 
 
   return (
@@ -104,15 +99,29 @@ export default function Cart() {
                 <div className="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
                 ${product.price}
                 </div>
+                <div className="flex items-center justify-end ml-4">
+                    <button
+                      onClick={() => handleAdd(product.id)}
+                      className="w-12 px-2 py-1 text-sm font-medium text-white bg-blue-700 rounded hover:bg-green-700"
+                    >
+                      +
+                    </button>
+                    <button
+                      onClick={() => handleSub(product.id)}
+                      className="w-12 px-2 py-1 ml-2 text-sm font-medium text-white bg-blue-700 rounded hover:bg-red-700"
+                    >
+                      -
+                    </button>
+                  </div>
               </div>
+            
             </li>
              ))}
           </ul>
         </div>
         <div className="flex items-center justify-end mb-1">
-        <Link to={'/pay'}
-                    className=" w-44 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                  > Pay </Link>
+        <Link to={'/pay'} className=" w-44 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        > Pay </Link>
       </div>
       </div>
 
